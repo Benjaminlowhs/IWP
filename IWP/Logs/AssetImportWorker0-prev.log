@@ -15,7 +15,7 @@ C:/Users/Benjamin/Desktop/School/Year3Sem1/IWP/ProjectFile/IWP/IWP
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58187
+62982
 Successfully changed project path to: C:/Users/Benjamin/Desktop/School/Year3Sem1/IWP/ProjectFile/IWP/IWP
 C:/Users/Benjamin/Desktop/School/Year3Sem1/IWP/ProjectFile/IWP/IWP
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Users/Benjamin/Desktop/School/Year3Sem1/IWP/ProjectFile/IWP/IWP
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [25988] Host "[IP] 192.168.86.32 [Port] 0 [Flags] 2 [Guid] 2297831624 [EditorId] 2297831624 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-GN828QNG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [6040] Host "[IP] 192.168.86.32 [Port] 0 [Flags] 2 [Guid] 3289386508 [EditorId] 3289386508 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-GN828QNG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [25988] Host "[IP] 192.168.86.32 [Port] 0 [Flags] 2 [Guid] 2297831624 [EditorId] 2297831624 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-GN828QNG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [6040] Host "[IP] 192.168.86.32 [Port] 0 [Flags] 2 [Guid] 3289386508 [EditorId] 3289386508 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-GN828QNG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 285.29 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 284.66 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.16f1 (4016570cf34f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Resources/UnitySubsystems
@@ -67,5 +67,156 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56000
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56192
 Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.023277 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 227.23 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.869 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1870ms)
+		BeginReloadAssembly (217ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (2ms)
+		EndReloadAssembly (1363ms)
+			LoadAssemblies (213ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (319ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (68ms)
+			SetupLoadedEditorAssemblies (830ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (174ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (227ms)
+				BeforeProcessingInitializeOnLoad (3ms)
+				ProcessInitializeOnLoadAttributes (277ms)
+				ProcessInitializeOnLoadMethodAttributes (148ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.018941 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Benjamin\Desktop\School\Year3Sem1\IWP\ProjectFile\IWP\IWP\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Benjamin\Desktop\School\Year3Sem1\IWP\ProjectFile\IWP\IWP\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.01 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.031 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3032ms)
+		BeginReloadAssembly (421ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (167ms)
+		EndReloadAssembly (2249ms)
+			LoadAssemblies (241ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (673ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (144ms)
+			SetupLoadedEditorAssemblies (1113ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (38ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (261ms)
+				ProcessInitializeOnLoadAttributes (713ms)
+				ProcessInitializeOnLoadMethodAttributes (76ms)
+				AfterProcessingInitializeOnLoad (23ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (15ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
+Refreshing native plugins compatible for Editor in 1.98 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3522 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 40 unused Assets / (184.2 KB). Loaded Objects now: 3980.
+Memory consumption went from 121.6 MB to 121.4 MB.
+Total: 7.116400 ms (FindLiveObjects: 0.503400 ms CreateObjectMapping: 0.295200 ms MarkObjects: 6.108000 ms  DeleteObjects: 0.208200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 782528.408505 seconds.
+  path: Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword3/Sword3_Material_Red.mat
+  artifactKey: Guid(6592fe0086859e74c84162de3826b9a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword3/Sword3_Material_Red.mat using Guid(6592fe0086859e74c84162de3826b9a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5500697529c7e40e80ae0a6607375d40') in 0.890503 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword6/Sword6_Material_Yellow.mat
+  artifactKey: Guid(1513e28ac8bfeb5479f03c202f6127d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword6/Sword6_Material_Yellow.mat using Guid(1513e28ac8bfeb5479f03c202f6127d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3581cb444da94558fd1b7186f9f91a93') in 0.335589 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword7/Sword7_Material_Green.mat
+  artifactKey: Guid(9d3dcfae311cd2f418047e848e3b45d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword7/Sword7_Material_Green.mat using Guid(9d3dcfae311cd2f418047e848e3b45d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '209323a7eddfac3661a3f7fd60885580') in 0.068810 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword2/Sword2_Material_Red.mat
+  artifactKey: Guid(58e43cc7cb9771d4bbe67f63914f065e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword2/Sword2_Material_Red.mat using Guid(58e43cc7cb9771d4bbe67f63914f065e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '113daea44f2a45dda778da0d8e762cab') in 0.065727 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword1/Sword1_Material_Bronze.mat
+  artifactKey: Guid(603aa49c288eb5a499ecadfa9d63e3c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword1/Sword1_Material_Bronze.mat using Guid(603aa49c288eb5a499ecadfa9d63e3c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3404eddb79a6c772449c1351a711d07') in 0.057511 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword4/Sword4_Material_Yellow.mat
+  artifactKey: Guid(5bf9745e4cdf3544db118edd03429750) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword4/Sword4_Material_Yellow.mat using Guid(5bf9745e4cdf3544db118edd03429750) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3931c41ee1f69e8674032fbff26f1ca3') in 0.067615 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Demo/Ground.mat
+  artifactKey: Guid(9e5cb2051d46e4a4dafeeda52546aaa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Demo/Ground.mat using Guid(9e5cb2051d46e4a4dafeeda52546aaa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a9b94c8a8a6800dbf10b470ed5a595c') in 0.033525 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword3/Sword3_Material_Blue.mat
+  artifactKey: Guid(8fbe65689cacd8545904ad29279d3854) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Weapons/LowPoly/FreeSwords/Sword3/Sword3_Material_Blue.mat using Guid(8fbe65689cacd8545904ad29279d3854) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd80167491913a70b7f9acbab83abbe83') in 0.048443 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
