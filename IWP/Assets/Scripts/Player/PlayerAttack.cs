@@ -8,15 +8,16 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     int noOfClicks;
     bool canClick;
+    public bool isAttacking;
 
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-
         noOfClicks = 0;
         canClick = true;
+        isAttacking = false;
     }
 
     // Update is called once per frame
@@ -34,6 +35,7 @@ public class PlayerAttack : MonoBehaviour
         if (canClick)
         {
             noOfClicks++;
+            isAttacking = true;
         }
 
         if (noOfClicks == 1)

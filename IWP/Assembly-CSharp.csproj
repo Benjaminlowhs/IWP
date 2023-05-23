@@ -60,11 +60,15 @@
     <Compile Include="Assets\Attacking.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Enemy\BehaviourTree\Node.cs" />
     <Compile Include="Assets\Scripts\Enemy\BehaviourTree\Tree.cs" />
     <Compile Include="Assets\Scripts\Enemy\BehaviourTree\Sequence.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\BehaviourTree\Selector.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BehaviourTree\Node.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyBT\CheckEnemyFOVRange.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyBT\EnemyBT.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Soldier.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
