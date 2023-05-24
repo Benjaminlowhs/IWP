@@ -52,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
         {
             anim.SetInteger("animation", 4);
             canClick = true;
+            isAttacking = false;
             noOfClicks = 0;
         }
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack1") && noOfClicks >= 1)
@@ -63,6 +64,7 @@ public class PlayerAttack : MonoBehaviour
         {
             anim.SetInteger("animation", 4);
             canClick = true;
+            isAttacking = false;
             noOfClicks = 0;
         }
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack2") && noOfClicks >= 3)
@@ -75,6 +77,7 @@ public class PlayerAttack : MonoBehaviour
             anim.SetInteger("animation", 4);
             canClick = true;
             noOfClicks = 0;
+            isAttacking = false;
         }
     }
 

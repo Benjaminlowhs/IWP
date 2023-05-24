@@ -365,6 +365,7 @@
 "Assets/Scripts/Enemy/Soldier.cs"
 "Assets/Scripts/Player/PlayerAttack.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
+"Assets/Scripts/Player/PlayerStats.cs"
 "Assets/Scripts/Player/Weapon.cs"
 -langversion:9.0
 

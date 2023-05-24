@@ -5,9 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField] private float movementSpeed;
+    public float movementSpeed;
     public float maxHP;
-    [SerializeField] private int fovRange;
+    public int fovRange;
     public float healthPoint;
     
 
