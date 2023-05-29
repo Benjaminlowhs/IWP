@@ -6,15 +6,20 @@ public class Soldier : Enemy
 {
     State myCurrentState;
     Transform player;
+    PlayerStats playerStats;
     private float stoppingDistance = 2f;
     // Start is called before the first frame update
     void Start()
     {
         myCurrentState = State.IDLE;
-        healthPoint = maxHP;
+        
         fovRange = 10;
         movementSpeed = 2;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerStats = player.GetComponent<PlayerStats>();
+        enemyLevel = playerStats.level + 2;
+        maxHP = enemyLevel * 5;
+        healthPoint = maxHP;
     }
 
     // Update is called once per frame
@@ -23,6 +28,7 @@ public class Soldier : Enemy
         if (healthPoint <= 0)
         {
             die();
+            playerStats.xp += enemyLevel * 5;
         }
 
         
@@ -59,7 +65,8 @@ public class Soldier : Enemy
                 {
                     myCurrentState = State.CHASE;
                 }
-                Debug.Log("Attacking");
+                //Debug.Log("Attacking");
+                playerStats.hp -= 1;
                 break;
             case State.SURRENDER:
                 Debug.Log("Surrender");

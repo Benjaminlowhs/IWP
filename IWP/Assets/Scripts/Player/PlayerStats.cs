@@ -5,17 +5,37 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 
-    private int xp;
+    public int xp;
+    public int hp;
+    public int level;
+    public int maxHp = 10;
+    public int attack;
+    public int resistance;
+    public float speed;
+    private int carryOverXp;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        level = 1;
+        speed = 5f;
+        hp = maxHp;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (hp <= 0)
+        {
+            //Debug.Log("Dead");
+        }
+
+        if (xp >= level * 10)
+        {
+            carryOverXp = xp - (level * 10);
+            xp = carryOverXp;
+            level += 1;
+        }
     }
+
 }

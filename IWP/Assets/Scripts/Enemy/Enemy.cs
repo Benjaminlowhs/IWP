@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float maxHP;
     public int fovRange;
     public float healthPoint;
+    public int enemyLevel;
     
 
     public enum State
@@ -28,14 +29,14 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-         switch (currentState)
-        {
-            case State.IDLE:
-                break;
-        }
-    }
+    //void Update()
+    //{
+    //     switch (currentState)
+    //    {
+    //        case State.IDLE:
+    //            break;
+    //    }
+    //}
 
     protected void chase()
     {

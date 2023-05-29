@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    private float speed = 5f;
+    
     private float rotationSpeed = 720f;
     private float jumpSpeed = 5f;
 
@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private float? lastGroundTime;
     private float? jumpButtonPressedTime;
 
+    PlayerStats playerstats;
+
     private Animator animator;
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
+        playerstats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
+        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * playerstats.speed;
         movementDirection.Normalize();
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
