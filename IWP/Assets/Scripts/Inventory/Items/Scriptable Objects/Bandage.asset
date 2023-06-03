@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18020320cfce0864bb6a36dfe3fa2eed, type: 3}
+  m_Name: Bandage
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8243371709015246142, guid: 7022aad4f6e97b64281f2f489172d96d, type: 3}
+  type: 0
+  description: Bandage to heal player.
+  restoreHealthValue: 0
