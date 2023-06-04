@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090d19ad5340c364d8c8de758d242f6f, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2947766031189574252, guid: fedec946c7fd97f4d82cadc5d6bca1ba, type: 3}
+  Id: 1
+  uiDisplay: {fileID: 21300000, guid: 9f0f75ea81d787c4aa36acddaf4a1ae1, type: 3}
   type: 1
   description: Iron is used in a lot of sword. It can help boost your sword a little.

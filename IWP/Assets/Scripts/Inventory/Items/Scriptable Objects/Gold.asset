@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb734f91da3d6e4c87e16164f0025b7, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5089867207188537065, guid: 35c79f9f929f70b4e81802e8884de036, type: 3}
+  Id: 0
+  uiDisplay: {fileID: 21300000, guid: 219c65e5ca8dc654f92a0e3f84ef42e5, type: 3}
   type: 2
   description: Used to buy ores, bandages from the shop.
   amount: 0

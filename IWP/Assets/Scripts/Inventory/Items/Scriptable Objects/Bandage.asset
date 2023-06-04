@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18020320cfce0864bb6a36dfe3fa2eed, type: 3}
   m_Name: Bandage
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8243371709015246142, guid: 7022aad4f6e97b64281f2f489172d96d, type: 3}
+  Id: 4
+  uiDisplay: {fileID: 21300000, guid: 0d67cf899925d744bb7cc03197299fdd, type: 3}
   type: 0
   description: Bandage to heal player.
-  restoreHealthValue: 0
+  restoreHealthValue: 20

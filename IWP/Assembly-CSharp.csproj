@@ -59,7 +59,9 @@
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBT\EnemyBT.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBT\CheckEnemyFOVRange.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\ItemDatabaseObject.cs" />
     <Compile Include="Assets\Scripts\Inventory\Items\GoldObject.cs" />
+    <Compile Include="Assets\Scripts\Inventory\Items\GroundItem.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Inventory\Items\DefaultObject.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
@@ -73,11 +75,10 @@
     <Compile Include="Assets\Scripts\Enemy\BehaviourTree\Sequence.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteract.cs" />
+    <Compile Include="Assets\Scripts\Inventory\MainInventory\DisplayInventory.cs" />
     <Compile Include="Assets\Scripts\Enemy\BehaviourTree\Selector.cs" />
     <Compile Include="Assets\Scripts\Enemy\BehaviourTree\Node.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInv.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Items\Item.cs" />
-    <Compile Include="Assets\Scripts\Inventory\MainInventory\DisplayInventory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
