@@ -24,6 +24,9 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI atkText;
     public TextMeshProUGUI defText;
 
+    public GameObject atkBtn;
+    public GameObject defBtn;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,16 +64,35 @@ public class PlayerStats : MonoBehaviour
         lvlUpPointText.text = "Available Points: " + levelUpPoint;
         atkText.text = attack.ToString();
         defText.text = defense.ToString();
+
+        LevelUpUI();
+
     }
 
     public void UpgradeAtk()
     {
         attack += 1;
+        levelUpPoint -= 1;
     }
 
     public void UpgradeDef()
     {
         defense += 1;
+        levelUpPoint -= 1;
+    }
+
+    public void LevelUpUI()
+    {
+        if (levelUpPoint > 0)
+        {
+            atkBtn.gameObject.SetActive(true);
+            defBtn.gameObject.SetActive(true);
+        }
+        else
+        {
+            atkBtn.gameObject.SetActive(false);
+            defBtn.gameObject.SetActive(false);
+        }
     }
 
 

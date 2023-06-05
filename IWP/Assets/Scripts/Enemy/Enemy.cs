@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public int fovRange;
     public float healthPoint;
     public int enemyLevel;
+    public int enemyDamage;
     
 
     public enum State

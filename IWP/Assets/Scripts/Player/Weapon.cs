@@ -44,7 +44,7 @@ public class Weapon : MonoBehaviour
             if (playerAttack_script.isAttacking != false)
             {
                 Debug.Log("Hit soldier");
-                other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack;
+                other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
                 playerAttack_script.isAttacking = false;
             }
             

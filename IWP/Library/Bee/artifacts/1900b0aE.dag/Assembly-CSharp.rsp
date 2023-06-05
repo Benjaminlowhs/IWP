@@ -360,6 +360,7 @@
 "Assets/Scripts/Enemy/Enemy.cs"
 "Assets/Scripts/Enemy/EnemyBT/CheckEnemyFOVRange.cs"
 "Assets/Scripts/Enemy/EnemyBT/EnemyBT.cs"
+"Assets/Scripts/Enemy/enemyWeapon.cs"
 "Assets/Scripts/Enemy/Soldier.cs"
 "Assets/Scripts/Inventory/Items/DefaultObject.cs"
 "Assets/Scripts/Inventory/Items/GoldObject.cs"
@@ -376,6 +377,7 @@
 "Assets/Scripts/Player/PlayerMovement.cs"
 "Assets/Scripts/Player/PlayerStats.cs"
 "Assets/Scripts/Player/Weapon.cs"
+"Assets/Scripts/Player/WeaponStats.cs"
 -langversion:9.0
 
 /deterministic

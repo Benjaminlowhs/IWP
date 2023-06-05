@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Soldier : Enemy
 {
-    State myCurrentState;
+    public State myCurrentState;
     Transform player;
     PlayerStats playerStats;
+    public GameObject enemyWeapon;
+
+    public Animator animator;
     private float stoppingDistance = 2f;
     // Start is called before the first frame update
     void Start()
@@ -16,8 +19,10 @@ public class Soldier : Enemy
         fovRange = 10;
         movementSpeed = 2;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        animator = GetComponent<Animator>();
         playerStats = player.GetComponent<PlayerStats>();
         enemyLevel = playerStats.level + 2;
+        enemyDamage = enemyLevel * 5;
         maxHP = enemyLevel * 5;
         healthPoint = maxHP;
     }
@@ -46,9 +51,11 @@ public class Soldier : Enemy
                 break;
             case State.CHASE:
                 //Debug.Log("Chasing");
+                animator.SetBool("isChasing", true);
                 if (fovRange < Vector3.Distance(player.position, transform.position))
                 {
                     myCurrentState = State.IDLE;
+                    animator.SetBool("isChasing", false);
                 }
                 else
                 {
@@ -56,22 +63,35 @@ public class Soldier : Enemy
                     transform.position += transform.forward * movementSpeed * Time.deltaTime;
                     if (stoppingDistance >= Vector3.Distance(player.position, transform.position))
                     {
+                        animator.SetBool("isChasing", false);
                         myCurrentState = State.ATTACK;
                     }
                 }
                 break;
             case State.ATTACK:
+                animator.SetTrigger("Attack");
                 if (stoppingDistance < Vector3.Distance(player.position, transform.position))
                 {
+                    animator.SetBool("isChasing", true);
                     myCurrentState = State.CHASE;
                 }
                 //Debug.Log("Attacking");
-                playerStats.hp -= 1;
+                //playerStats.hp -= (enemyDamage - playerStats.defense);
                 break;
             case State.SURRENDER:
                 Debug.Log("Surrender");
                 break;
         }
 
+    }
+
+    public void StartAttack()
+    {
+        enemyWeapon.GetComponent<Collider>().enabled = true;
+    }
+
+    public void StopAttack()
+    {
+        enemyWeapon.GetComponent<Collider>().enabled = false;
     }
 }

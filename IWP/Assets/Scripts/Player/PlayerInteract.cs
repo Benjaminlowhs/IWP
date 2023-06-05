@@ -5,12 +5,25 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public GameObject inventory;
+    public GameObject stats;
+    public GameObject weaponStats;
     private bool toggle = false;
+    bool statsToggle = false;
+    bool weaponStatsToggle = false;
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
             InventoryUI();
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            StatsUI();
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            weaponStatsUI();
         }
     }
 
@@ -22,31 +35,23 @@ public class PlayerInteract : MonoBehaviour
         else
             inventory.gameObject.SetActive(false);
     }
-    //public InventoryObject inventory;
 
-    //private void OnMouseDown()
-    //{
-    //    if ()
-    //}
+    public void StatsUI()
+    {
+        statsToggle = !statsToggle;
+        if (statsToggle)
+            stats.gameObject.SetActive(true);
+        else
+            stats.gameObject.SetActive(false);
+    }
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    inventory = new Inventory();
-    //}
+    public void weaponStatsUI()
+    {
+        weaponStatsToggle = !weaponStatsToggle;
+        if (weaponStatsToggle)
+            weaponStats.gameObject.SetActive(true);
+        else
+            weaponStats.gameObject.SetActive(false);
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    ItemWorld itemWorld = other.GetComponent<ItemWorld>();
-    //    if (itemWorld != null)
-    //    {
-
-    //    }
-    //}
+    }
 }
