@@ -378,6 +378,7 @@
 "Assets/Scripts/Player/PlayerStats.cs"
 "Assets/Scripts/Player/Weapon.cs"
 "Assets/Scripts/Player/WeaponStats.cs"
+"Assets/Scripts/SceneScripts/SceneLoader.cs"
 -langversion:9.0
 
 /deterministic

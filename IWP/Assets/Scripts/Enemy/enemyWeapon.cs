@@ -46,7 +46,7 @@ public class enemyWeapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Hit Player");
+            //Debug.Log("Hit Player");
             other.gameObject.GetComponent<PlayerStats>().hp -= (soldierScript.enemyDamage - other.gameObject.GetComponent<PlayerStats>().defense);
             _collider.enabled = false;
             

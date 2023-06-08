@@ -10,6 +10,9 @@ public class PlayerInteract : MonoBehaviour
     private bool toggle = false;
     bool statsToggle = false;
     bool weaponStatsToggle = false;
+
+    public Transform playerSpawnPoint;
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -53,5 +56,16 @@ public class PlayerInteract : MonoBehaviour
         else
             weaponStats.gameObject.SetActive(false);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Death")
+        {
+            transform.position = new Vector3(64, 4, 5);
+            transform.GetComponent<PlayerStats>().xp = 0;
+            transform.GetComponent<PlayerStats>().hp = transform.GetComponent<PlayerStats>().maxHp;
+
+        }
     }
 }

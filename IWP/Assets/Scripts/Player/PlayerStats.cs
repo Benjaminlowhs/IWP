@@ -9,16 +9,18 @@ public class PlayerStats : MonoBehaviour
     public int xp;
     public int hp;
     public int level;
-    public int maxHp = 10;
+    public int maxHp;
     public int attack;
     public int defense;
     public float speed;
     private int carryOverXp;
     public int levelUpPoint;
+    public int honor;
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI xpText;
     public TextMeshProUGUI levelText;
+    public TextMeshProUGUI honorText;
 
     public TextMeshProUGUI lvlUpPointText;
     public TextMeshProUGUI atkText;
@@ -27,19 +29,22 @@ public class PlayerStats : MonoBehaviour
     public GameObject atkBtn;
     public GameObject defBtn;
 
+    public Transform playerRespawnPoint;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         level = 1;
         speed = 5f;
         attack = 5;
         defense = 5;
         levelUpPoint = 0;
+        maxHp = 100;
         hp = maxHp;
-        healthText.text = "HP: " + hp.ToString();
-        xpText.text = "XP: " + xp.ToString();
-        levelText.text = "Level: " + level.ToString();
+        honor = 0;
+        //healthText.text = "HP: " + hp.ToString();
+        //xpText.text = "XP: " + xp.ToString();
+        //levelText.text = "Level: " + level.ToString();
     }
 
     private void Update()
@@ -47,6 +52,9 @@ public class PlayerStats : MonoBehaviour
         if (hp <= 0)
         {
             //Debug.Log("Dead");
+            xp = 0;
+            hp = maxHp;
+            transform.position = playerRespawnPoint.position;
         }
 
         if (xp >= level * 10)
@@ -60,6 +68,7 @@ public class PlayerStats : MonoBehaviour
         healthText.text = "HP: " + hp.ToString();
         xpText.text = "XP: " + xp.ToString();
         levelText.text = "Level: " + level.ToString();
+        honorText.text = "Honor: " + honor.ToString();
 
         lvlUpPointText.text = "Available Points: " + levelUpPoint;
         atkText.text = attack.ToString();

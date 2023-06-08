@@ -10,6 +10,9 @@ public class Weapon : MonoBehaviour
     PlayerAttack playerAttack_script;
     PlayerStats playerStats;
     public int weaponAttack = 10;
+    //public GameObject soldier;
+    //Soldier soldierScript;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class Weapon : MonoBehaviour
         }
 
         playerStats = player.GetComponent<PlayerStats>();
+        //soldierScript = soldier.GetComponent<Soldier>();
 
         
     }
@@ -43,13 +47,27 @@ public class Weapon : MonoBehaviour
         {
             if (playerAttack_script.isAttacking != false)
             {
-                Debug.Log("Hit soldier");
+                //Debug.Log("Hit soldier");
                 other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
+                //if (soldierScript.healthPoint < (0.2 * soldierScript.maxHP))
+                //{
+                //    if (!soldierScript.hasRolled)
+                //    {
+
+                //        soldierScript.RollSurrenderChance();
+                //        if (soldierScript.hasRolled)
+                //        {
+                //            soldierScript.myCurrentState = Enemy.State.SURRENDER;
+                //        }
+                //    }
+                //}
                 playerAttack_script.isAttacking = false;
             }
             
         }
     }
+
+
 
 
 }

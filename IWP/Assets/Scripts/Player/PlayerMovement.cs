@@ -19,7 +19,12 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerStats playerstats;
 
+    PlayerAttack playerAttack;
+
     private Animator animator;
+
+    bool canJump;
+    bool canMove;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +33,23 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
         playerstats = GetComponent<PlayerStats>();
+        canJump = true;
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (playerAttack.isAttacking)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -47,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             lastGroundTime = Time.time;
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && canJump)
         {
             jumpButtonPressedTime = Time.time;
         }
@@ -56,9 +73,12 @@ public class PlayerMovement : MonoBehaviour
         {
             characterController.stepOffset = originalStepOffset;
             ySpeed = -0.5f;
+            animator.SetBool("isJumping", false);
+
             if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
             {
                 ySpeed = jumpSpeed;
+                animator.SetBool("isJumping", true);
                 jumpButtonPressedTime = null;
                 lastGroundTime = null;
             }
@@ -70,18 +90,37 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 velocity = movementDirection * magnitude;
         velocity.y = ySpeed;
-        characterController.Move(velocity * Time.deltaTime);
+        Physics.SyncTransforms();
+        if (canMove)
+        {
+            characterController.Move(velocity * Time.deltaTime);
+        }
 
         if (movementDirection != Vector3.zero)
         {
             animator.SetBool("IsMoving", true);
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            if (canMove)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            }
         }
         else
         {
             animator.SetBool("IsMoving", false);
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.normal.y <= 0.6)
+        {
+            canJump = false;
+        }
+        else
+        {
+            canJump = true;
         }
     }
 }

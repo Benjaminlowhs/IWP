@@ -13,7 +13,7 @@ public class PlayerInv : MonoBehaviour
         if (item)
         {
             inventory.AddItem(new Item(item.item), 1);
-            Debug.Log(potion.restoreHealthValue);
+            //Debug.Log(potion.restoreHealthValue);
             other.gameObject.SetActive(false);
             Destroy(other.gameObject);
         }

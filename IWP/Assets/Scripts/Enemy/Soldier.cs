@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Soldier : Enemy
 {
@@ -10,35 +11,65 @@ public class Soldier : Enemy
     public GameObject enemyWeapon;
 
     public Animator animator;
-    private float stoppingDistance = 2f;
+    private float stoppingDistance = 3f;
+
+    public NavMeshAgent enemy;
+
+    public float rotationSpeed = 10f;
+
+    public bool hasRolled = false;
+
+    float timeToDespawn;
+
+    float chance;
+
+    //Spawn dropped items
+    public GameObject gold;
+    public GameObject bandage;
+    public GameObject iron;
+    public GameObject steel;
+    public GameObject carbon;
+
     // Start is called before the first frame update
     void Start()
     {
         myCurrentState = State.IDLE;
-        
-        fovRange = 10;
+        chance = 0f;
+        fovRange = 7;
         movementSpeed = 2;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         playerStats = player.GetComponent<PlayerStats>();
         enemyLevel = playerStats.level + 2;
         enemyDamage = enemyLevel * 5;
-        maxHP = enemyLevel * 5;
+        maxHP = enemyLevel * 25;
         healthPoint = maxHP;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
+
+
         if (healthPoint <= 0)
         {
+            if (myCurrentState == State.SURRENDER)
+            {
+                playerStats.honor -= 1;
+            }
+            else
+            {
+                playerStats.honor += 1;
+            }
+            DropItem();
             die();
             playerStats.xp += enemyLevel * 5;
         }
 
         
-        else 
-
+        
         switch (myCurrentState)
         {
             case State.IDLE:
@@ -59,8 +90,8 @@ public class Soldier : Enemy
                 }
                 else
                 {
-                    transform.LookAt(player);
-                    transform.position += transform.forward * movementSpeed * Time.deltaTime;
+                    //transform.position += transform.forward * movementSpeed * Time.deltaTime;
+                    enemy.SetDestination(player.position);
                     if (stoppingDistance >= Vector3.Distance(player.position, transform.position))
                     {
                         animator.SetBool("isChasing", false);
@@ -69,6 +100,7 @@ public class Soldier : Enemy
                 }
                 break;
             case State.ATTACK:
+                RotateTowards(player);
                 animator.SetTrigger("Attack");
                 if (stoppingDistance < Vector3.Distance(player.position, transform.position))
                 {
@@ -79,8 +111,29 @@ public class Soldier : Enemy
                 //playerStats.hp -= (enemyDamage - playerStats.defense);
                 break;
             case State.SURRENDER:
-                Debug.Log("Surrender");
+                animator.SetBool("isSurrender", true);
+                if (timeToDespawn <= Time.time)
+                {
+                    playerStats.honor += 1;
+                    Debug.Log("Surrender kill");
+                    Destroy(gameObject);
+                    
+                }
+                //Debug.Log("Surrender");
                 break;
+        }
+
+        if (healthPoint <= (0.2 * maxHP))
+        {
+            if (!hasRolled)
+            {
+                if (RollSurrenderChance())
+                {
+                    myCurrentState = State.SURRENDER;
+
+                    timeToDespawn = Time.time + 10f;
+                }
+            }
         }
 
     }
@@ -93,5 +146,67 @@ public class Soldier : Enemy
     public void StopAttack()
     {
         enemyWeapon.GetComponent<Collider>().enabled = false;
+    }
+
+    public bool RollSurrenderChance()
+    {
+        chance = (float)playerStats.honor / (enemyLevel * 20);
+        if (chance > 100)
+        {
+            chance = 100;
+        }
+
+        hasRolled = true;
+        if (Random.value <= chance)
+        {
+            //Debug.Log(chance.ToString("F8") + ", successful");
+            return true;
+        }
+        else
+        {
+            //Debug.Log(chance.ToString("F8") + ", failed");
+            return false;
+        }
+    }
+
+    private void RotateTowards (Transform target)
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Death")
+        {
+            Debug.Log("Suicide");
+            Destroy(gameObject);
+
+        }
+    }
+
+    private void DropItem()
+    {
+        if (Random.value <= 0.01)
+        {
+            Instantiate(carbon, transform.position, Quaternion.identity);
+        }
+        if (Random.value <= 0.05)
+        {
+            Instantiate(steel, transform.position, Quaternion.identity);
+        }
+        if (Random.value <= 0.1)
+        {
+            Instantiate(iron, transform.position, Quaternion.identity);
+        }
+        if (Random.value <= 0.15)
+        {
+            Instantiate(gold, transform.position, Quaternion.identity);
+        }
+        if (Random.value <= 1.0)
+        {
+            Instantiate(bandage, transform.position, Quaternion.identity);
+        }
     }
 }

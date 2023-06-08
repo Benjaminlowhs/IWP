@@ -38,7 +38,7 @@ public class WeaponStats : MonoBehaviour
         enhanceBtn = EnhanceBackground.GetComponent<Button>();
         enhanceBtn.enabled = false;
         weaponDamage = weapon.weaponAttack;
-        Debug.Log(weaponDamage + "," + weapon.weaponAttack);
+        //Debug.Log(weaponDamage + "," + weapon.weaponAttack);
         weaponLevel = 1;
     }
 
