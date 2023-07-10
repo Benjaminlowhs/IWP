@@ -35,10 +35,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerAttack_script.isAttacking == true)
-        {
-            _collider.enabled = true;
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,23 +46,13 @@ public class Weapon : MonoBehaviour
             {
                 //Debug.Log("Hit soldier");
                 other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
-                //if (soldierScript.healthPoint < (0.2 * soldierScript.maxHP))
-                //{
-                //    if (!soldierScript.hasRolled)
-                //    {
-
-                //        soldierScript.RollSurrenderChance();
-                //        if (soldierScript.hasRolled)
-                //        {
-                //            soldierScript.myCurrentState = Enemy.State.SURRENDER;
-                //        }
-                //    }
-                //}
                 playerAttack_script.isAttacking = false;
             }
             
         }
     }
+
+    
 
 
 

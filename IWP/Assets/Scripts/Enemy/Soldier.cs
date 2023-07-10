@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Soldier : Enemy
 {
     public State myCurrentState;
-    Transform player;
+    public Transform player;
     PlayerStats playerStats;
     public GameObject enemyWeapon;
 
@@ -15,12 +15,10 @@ public class Soldier : Enemy
 
     public NavMeshAgent enemy;
 
-    public float rotationSpeed = 10f;
-
-    public bool hasRolled = false;
 
     float timeToDespawn;
 
+    public bool hasRolled = false;
     float chance;
 
     //Spawn dropped items
@@ -37,7 +35,7 @@ public class Soldier : Enemy
         chance = 0f;
         fovRange = 7;
         movementSpeed = 2;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         playerStats = player.GetComponent<PlayerStats>();
         enemyLevel = playerStats.level + 2;
@@ -169,12 +167,7 @@ public class Soldier : Enemy
         }
     }
 
-    private void RotateTowards (Transform target)
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-    }
+    
 
     private void OnCollisionEnter(Collision other)
     {

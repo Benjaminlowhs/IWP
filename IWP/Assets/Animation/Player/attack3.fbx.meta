@@ -57,6 +57,20 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.24714835
+        functionName: WeaponColliderOn
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9505704
+        functionName: WeaponColliderOff
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.9876669
         functionName: ComboCheck
         data: 

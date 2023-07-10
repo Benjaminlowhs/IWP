@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     bool canClick;
     public bool isAttacking;
 
+    public GameObject playerWeapon;
+
 
     // Start is called before the first frame update
     void Start()
@@ -81,5 +83,15 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    
+    public void WeaponColliderOn()
+    {
+        playerWeapon.GetComponent<Collider>().enabled = true;
+        Debug.Log("On");
+    }
+
+    public void WeaponColliderOff()
+    {
+        playerWeapon.GetComponent<Collider>().enabled = false;
+        Debug.Log("Off");
+    }
 }
