@@ -71,8 +71,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.987667
-        functionName: ComboCheck
+      - time: 0.94296587
+        functionName: ComboEnd
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
         floatParameter: 0

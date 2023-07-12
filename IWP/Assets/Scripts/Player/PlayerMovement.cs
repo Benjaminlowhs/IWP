@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     
-    private float rotationSpeed = 720f;
+    public float rotationSpeed = 720f;
     private float jumpSpeed = 5f;
 
     private CharacterController characterController;
@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             canMove = true;
         }
+
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");

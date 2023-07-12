@@ -42,12 +42,8 @@ public class Weapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Soldier")
         {
-            if (playerAttack_script.isAttacking != false)
-            {
-                //Debug.Log("Hit soldier");
-                other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
-                playerAttack_script.isAttacking = false;
-            }
+            Debug.Log("Hit soldier");
+            other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
             
         }
     }

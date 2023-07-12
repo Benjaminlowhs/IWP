@@ -10,7 +10,13 @@ public class PlayerAttack : MonoBehaviour
     bool canClick;
     public bool isAttacking;
 
+    public bool isInCombo = false;
+    public bool continueComboCheck = false;
+    public float comboTimer = 5f;
+    public int attackType = 0;
+    PlayerStats playerstats;
     public GameObject playerWeapon;
+    PlayerMovement playerMovement;
 
 
     // Start is called before the first frame update
@@ -20,16 +26,89 @@ public class PlayerAttack : MonoBehaviour
         noOfClicks = 0;
         canClick = true;
         isAttacking = false;
+        playerstats = GetComponent<PlayerStats>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    ComboStarter();
+        //}
+
         if (Input.GetMouseButtonDown(0))
         {
-            ComboStarter();
+            ComboClickCheck();
         }
 
+        if (continueComboCheck)
+        {
+            comboTimer -= Time.deltaTime;
+
+            Debug.Log(comboTimer);
+            if (comboTimer < 0f)
+            {
+                continueComboCheck = false;
+                isInCombo = false;
+                comboTimer = 5f;
+                anim.SetInteger("animation", 4);
+                attackType = 0;
+            }
+        }
+    }
+
+    public void ComboClickCheck()
+    {
+        // Check if player is in combo
+        if (!isInCombo)
+        {
+            // Start the first attack
+            anim.SetInteger("animation", 31);
+            playerstats.speed = 2f;
+            isInCombo = true;
+            attackType = 1;
+            playerMovement.rotationSpeed = 100;
+
+        }
+
+        if (isInCombo && continueComboCheck)
+        {
+            continueComboCheck = false;
+            comboTimer = 5f;
+            if (attackType == 1)
+            {
+                anim.SetInteger("animation", 33);
+                playerstats.speed = 3f;
+                playerMovement.rotationSpeed = 100;
+                attackType = 2;
+            }
+            else if (attackType == 2)
+            {
+                anim.SetInteger("animation", 6);
+                playerstats.speed = 2f;
+                playerMovement.rotationSpeed = 100;
+                attackType = 3;
+            }
+        }
+    }
+
+    public void ComboSystem()
+    {
+        anim.SetInteger("animation", 4);
+        playerMovement.rotationSpeed = 720f;
+        playerstats.speed = 5f;
+        continueComboCheck = true;
+    }
+
+    public void ComboEnd()
+    {
+        attackType = 0;
+        isInCombo = false;
+        playerstats.speed = 5f;
+        playerMovement.rotationSpeed = 720f;
+        anim.SetInteger("animation", 4);
     }
 
     void ComboStarter()
@@ -86,12 +165,12 @@ public class PlayerAttack : MonoBehaviour
     public void WeaponColliderOn()
     {
         playerWeapon.GetComponent<Collider>().enabled = true;
-        Debug.Log("On");
     }
 
     public void WeaponColliderOff()
     {
         playerWeapon.GetComponent<Collider>().enabled = false;
-        Debug.Log("Off");
     }
+
+    
 }

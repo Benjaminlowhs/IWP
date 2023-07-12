@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Soldier
   - Death
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,8 @@ public class enemyWeapon : MonoBehaviour
     public GameObject soldier;
     Soldier soldierScript;
 
+    
+
     bool isAttacking;
 
     // Start is called before the first frame update
@@ -22,24 +24,6 @@ public class enemyWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (soldierScript.myCurrentState == Enemy.State.ATTACK)
-        //{
-        //    isAttacking = true;
-        //    Debug.Log("Attacking");
-        //}
-        //if (soldierScript.animator.GetCurrentAnimatorStateInfo(0).IsName("attack"))
-        //{
-        //    _collider.enabled = true;
-        //}
-        //else
-        //{
-        //    _collider.enabled = false;
-        //}
-
-        //if (isAttacking)
-        //{
-        //    _collider.enabled = true;
-        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,6 +32,10 @@ public class enemyWeapon : MonoBehaviour
         {
             //Debug.Log("Hit Player");
             other.gameObject.GetComponent<PlayerStats>().hp -= (soldierScript.enemyDamage - other.gameObject.GetComponent<PlayerStats>().defense);
+            other.gameObject.GetComponent<PlayerStats>().hitAmount += 1;
+            other.gameObject.GetComponent<PlayerStats>().isHit = true;
+            other.gameObject.GetComponent<PlayerStats>().bloodScreenTimer = 5f;
+
             _collider.enabled = false;
             
 

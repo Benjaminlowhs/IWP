@@ -10,6 +10,7 @@ public class PlayerInteract : MonoBehaviour
     private bool toggle = false;
     bool statsToggle = false;
     bool weaponStatsToggle = false;
+    public ParticleSystem bloodSplash;
 
     public Transform playerSpawnPoint;
 
@@ -66,6 +67,12 @@ public class PlayerInteract : MonoBehaviour
             transform.GetComponent<PlayerStats>().xp = 0;
             transform.GetComponent<PlayerStats>().hp = transform.GetComponent<PlayerStats>().maxHp;
 
+        }
+
+        if (other.gameObject.tag == "EnemyWeapon")
+        {
+
+            bloodSplash.Play();
         }
     }
 }
