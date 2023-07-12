@@ -8,6 +8,8 @@ TagManager:
   - Soldier
   - Death
   - EnemyWeapon
+  - BossWeapon
+  - Boss
   layers:
   - Default
   - TransparentFX

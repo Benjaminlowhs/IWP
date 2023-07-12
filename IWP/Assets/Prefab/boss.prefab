@@ -6338,6 +6338,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword2_FBX
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3271cae2a4b914342a461c5ff92a3733, type: 3}
+      propertyPath: m_TagString
+      value: BossWeapon
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3271cae2a4b914342a461c5ff92a3733, type: 3}
 --- !u!4 &8605571397135241450 stripped
@@ -6345,3 +6349,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3271cae2a4b914342a461c5ff92a3733, type: 3}
   m_PrefabInstance: {fileID: 8135639383081449217}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8946102949771364944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3271cae2a4b914342a461c5ff92a3733, type: 3}
+  m_PrefabInstance: {fileID: 8135639383081449217}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8885689668599659452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946102949771364944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5d7ee8aa6bb9c46995eb4016629342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldier: {fileID: 0}
+  boss: {fileID: 0}

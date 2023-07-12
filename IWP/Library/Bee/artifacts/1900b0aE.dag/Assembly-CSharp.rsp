@@ -360,6 +360,7 @@
 "Assets/Scripts/Enemy/BehaviourTree/Sequence.cs"
 "Assets/Scripts/Enemy/BehaviourTree/Tree.cs"
 "Assets/Scripts/Enemy/Boss.cs"
+"Assets/Scripts/Enemy/bossWeapon.cs"
 "Assets/Scripts/Enemy/Enemy.cs"
 "Assets/Scripts/Enemy/EnemyBT/CheckEnemyFOVRange.cs"
 "Assets/Scripts/Enemy/EnemyBT/EnemyBT.cs"

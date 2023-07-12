@@ -15,8 +15,13 @@ public class Soldier : Enemy
 
     public NavMeshAgent enemy;
 
-
+    // Time for soldier to despawn
     float timeToDespawn;
+
+    // Check if enemy is hit
+    public bool isHit;
+    // Hit timer so player weapon collider doesn't trigger multiple times
+    public float isHitTimer = 1f;
 
     public bool hasRolled = false;
     float chance;
@@ -27,6 +32,8 @@ public class Soldier : Enemy
     public GameObject iron;
     public GameObject steel;
     public GameObject carbon;
+
+    float healTimer = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +46,7 @@ public class Soldier : Enemy
         animator = GetComponent<Animator>();
         playerStats = player.GetComponent<PlayerStats>();
         enemyLevel = playerStats.level + 2;
-        enemyDamage = enemyLevel * 5;
+        enemyDamage = 5;
         maxHP = enemyLevel * 25;
         healthPoint = maxHP;
     }
@@ -49,7 +56,15 @@ public class Soldier : Enemy
     {
         
 
-
+        if (isHit)
+        {
+            isHitTimer -= Time.deltaTime;
+            if (isHitTimer < 0f)
+            {
+                isHit = false;
+                isHitTimer = 1f;
+            }
+        }
 
         if (healthPoint <= 0)
         {
@@ -72,6 +87,19 @@ public class Soldier : Enemy
         {
             case State.IDLE:
                 //Debug.Log("Idling");
+                if (healthPoint > 0 && healthPoint < maxHP)
+                {
+                    healTimer -= Time.deltaTime;
+                    if (healTimer < 0)
+                    {
+                        healthPoint += 5;
+                        if (healthPoint > maxHP)
+                        {
+                            healthPoint = maxHP;
+                        }
+                        healTimer = 3f;
+                    }
+                }
                 if (fovRange >= Vector3.Distance(player.position, transform.position))
                 {
                     //Debug.Log("In range");

@@ -22,6 +22,14 @@ public class Boss : Enemy
     // Stopping distance
     private float stoppingDistance = 3f;
 
+    // Check if enemy is hit
+    public bool isHit;
+    // Hit timer so player weapon collider doesn't trigger multiple times
+    public float isHitTimer = 1f;
+
+    float healTimer = 3f;
+
+
     public UnityEngine.AI.NavMeshAgent enemy;
 
     float prepareTimer = 0f;
@@ -48,7 +56,7 @@ public class Boss : Enemy
         animator = GetComponent<Animator>();
         // Get Player stats component
         playerStats = player.GetComponent<PlayerStats>();
-        enemyDamage = 25;
+        enemyDamage = 20;
         maxHP = 500;
         healthPoint = maxHP;
     }
@@ -56,6 +64,18 @@ public class Boss : Enemy
     // Update is called once per frame
     void Update()
     {
+
+        if (isHit)
+        {
+            isHitTimer -= Time.deltaTime;
+            if (isHitTimer < 0f)
+            {
+                isHit = false;
+                isHitTimer = 1f;
+            }
+        }
+
+
         if (healthPoint <= 0)
         {
             if (myCurrentState == State.SURRENDER)
@@ -74,6 +94,19 @@ public class Boss : Enemy
         {
             case State.IDLE:
                 //Debug.Log("Idling");
+                if (healthPoint > 0 && healthPoint < maxHP)
+                {
+                    healTimer -= Time.deltaTime;
+                    if (healTimer < 0)
+                    {
+                        healthPoint += 5;
+                        if (healthPoint > maxHP)
+                        {
+                            healthPoint = maxHP;
+                        }
+                        healTimer = 3f;
+                    }
+                }
                 if (fovRange >= Vector3.Distance(player.position, transform.position))
                 {
                     //Debug.Log("In range");
@@ -117,22 +150,9 @@ public class Boss : Enemy
                     animator.SetTrigger("attack2");
                 }
 
-                //if (stoppingDistance < Vector3.Distance(player.position, transform.position))
-                //{
-                //    animator.SetBool("isChasing", true);
-                //    myCurrentState = State.CHASE;
-                //    rollAttackChance = false;
-                //}
                 break;
             case State.PREPARE:
                 rollAttackChance = false;
-                //prepareTimer++;
-                //if (prepareTimer > maxPrepareTime)
-                //{
-                //    animator.SetBool("isPreparing", false);
-                //    prepareTimer = 0;
-                //    myCurrentState = State.CHASE;
-                //}
                 break;
         }
     }
@@ -157,5 +177,15 @@ public class Boss : Enemy
     public void StartMovement()
     {
         enemy.speed = 3.5f;
+    }
+
+    public void StartAttack()
+    {
+        bossWeapon.GetComponent<Collider>().enabled = true;
+    }
+
+    public void StopAttack()
+    {
+        bossWeapon.GetComponent<Collider>().enabled = false;
     }
 }

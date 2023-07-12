@@ -43,8 +43,20 @@ public class Weapon : MonoBehaviour
         if (other.gameObject.tag == "Soldier")
         {
             Debug.Log("Hit soldier");
-            other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
+            if (!other.gameObject.GetComponent<Soldier>().isHit)
+            {
+                other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
+                other.gameObject.GetComponent<Soldier>().isHit = true;
+            }
             
+        }
+        if (other.gameObject.tag == "Boss")
+        {
+            if (!other.gameObject.GetComponent<Boss>().isHit)
+            {
+                other.gameObject.GetComponent<Boss>().healthPoint -= playerStats.attack + weaponAttack;
+                other.gameObject.GetComponent<Boss>().isHit = true;
+            }
         }
     }
 
