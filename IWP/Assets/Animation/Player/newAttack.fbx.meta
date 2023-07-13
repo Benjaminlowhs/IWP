@@ -64,15 +64,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.688213
-        functionName: WeaponColliderOff
+      - time: 0.5933721
+        functionName: ComboSystem
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.73384035
-        functionName: ComboSystem
+      - time: 0.688213
+        functionName: WeaponColliderOff
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
         floatParameter: 0

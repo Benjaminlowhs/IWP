@@ -69,7 +69,7 @@ public class PlayerInteract : MonoBehaviour
 
         }
 
-        if (other.gameObject.tag == "EnemyWeapon")
+        if (other.gameObject.tag == "EnemyWeapon" || other.gameObject.tag == "BossWeapon")
         {
 
             bloodSplash.Play();
