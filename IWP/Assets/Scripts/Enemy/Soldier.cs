@@ -26,6 +26,8 @@ public class Soldier : Enemy
     public bool hasRolled = false;
     float chance;
 
+    bool isAttacking = false;
+
     //Spawn dropped items
     public GameObject gold;
     public GameObject bandage;
@@ -100,9 +102,11 @@ public class Soldier : Enemy
                         healTimer = 3f;
                     }
                 }
+                enemy.speed = 0f;
                 if (fovRange >= Vector3.Distance(player.position, transform.position))
                 {
                     //Debug.Log("In range");
+                    enemy.speed = 5f;
                     myCurrentState = State.CHASE;
                 }
                 break;
@@ -120,7 +124,7 @@ public class Soldier : Enemy
                     enemy.SetDestination(player.position);
                     if (stoppingDistance >= Vector3.Distance(player.position, transform.position))
                     {
-                        animator.SetBool("isChasing", false);
+                        //animator.SetBool("isChasing", false);
                         myCurrentState = State.ATTACK;
                     }
                 }
@@ -167,11 +171,14 @@ public class Soldier : Enemy
     public void StartAttack()
     {
         enemyWeapon.GetComponent<Collider>().enabled = true;
+        enemy.speed = 0;
     }
 
     public void StopAttack()
     {
         enemyWeapon.GetComponent<Collider>().enabled = false;
+        enemy.speed = 5;
+        animator.ResetTrigger("Attack");
     }
 
     public bool RollSurrenderChance()

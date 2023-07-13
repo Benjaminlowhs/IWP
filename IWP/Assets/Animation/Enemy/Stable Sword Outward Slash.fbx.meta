@@ -64,7 +64,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9881093
+      - time: 0.8643635
         functionName: StopAttack
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: cd5d7ee8aa6bb9c46995eb4016629342, type: 3}
