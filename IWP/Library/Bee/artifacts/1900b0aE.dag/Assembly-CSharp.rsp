@@ -355,6 +355,14 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/EZ Camera Shake/Demo/Sample Scripts/ShakeByDistance.cs"
+"Assets/EZ Camera Shake/Demo/Sample Scripts/ShakeOnKeyPress.cs"
+"Assets/EZ Camera Shake/Demo/Sample Scripts/ShakeOnTrigger.cs"
+"Assets/EZ Camera Shake/Demo/ShakeDemo.cs"
+"Assets/EZ Camera Shake/Scripts/CameraShakeInstance.cs"
+"Assets/EZ Camera Shake/Scripts/CameraShakePresets.cs"
+"Assets/EZ Camera Shake/Scripts/CameraShaker.cs"
+"Assets/EZ Camera Shake/Scripts/Utilities/CameraUtilities.cs"
 "Assets/Scripts/Enemy/BehaviourTree/Node.cs"
 "Assets/Scripts/Enemy/BehaviourTree/Selector.cs"
 "Assets/Scripts/Enemy/BehaviourTree/Sequence.cs"
@@ -382,7 +390,9 @@
 "Assets/Scripts/Player/PlayerStats.cs"
 "Assets/Scripts/Player/Weapon.cs"
 "Assets/Scripts/Player/WeaponStats.cs"
+"Assets/Scripts/SceneScripts/CameraShake.cs"
 "Assets/Scripts/SceneScripts/SceneLoader.cs"
+"Assets/Scripts/SceneScripts/StageTracker.cs"
 -langversion:9.0
 
 /deterministic
