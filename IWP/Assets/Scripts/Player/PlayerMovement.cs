@@ -153,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.normal.y <= 0.8)
+        if (hit.normal.y <= 0.9)
         {
             slopeSlideVelocity = Vector3.ProjectOnPlane(new Vector3(0, ySpeed, 0), hit.normal);
             return;
