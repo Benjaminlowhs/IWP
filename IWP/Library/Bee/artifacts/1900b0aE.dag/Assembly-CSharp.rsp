@@ -390,7 +390,6 @@
 "Assets/Scripts/Player/PlayerStats.cs"
 "Assets/Scripts/Player/Weapon.cs"
 "Assets/Scripts/Player/WeaponStats.cs"
-"Assets/Scripts/SceneScripts/CameraShake.cs"
 "Assets/Scripts/SceneScripts/SceneLoader.cs"
 "Assets/Scripts/SceneScripts/StageTracker.cs"
 -langversion:9.0

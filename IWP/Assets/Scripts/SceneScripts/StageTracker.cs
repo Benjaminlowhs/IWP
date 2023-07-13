@@ -8,7 +8,7 @@ public class StageTracker : MonoBehaviour
 {
 
 
-    public float timeToShake = 3f;
+    public float timeToShake = 10f;
 
     public CinemachineVirtualCamera cinemachineVirtualCamera;
     private float timer = 0f;
@@ -30,7 +30,7 @@ public class StageTracker : MonoBehaviour
         timeToShake -= Time.deltaTime;
         if (timeToShake < 0f)
         {
-            timeToShake = 3f;
+            timeToShake = 10f;
             // Play camera shake
             ShakeCamera();
             Debug.Log("Shaking");

@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     bool canJump;
     bool canMove;
 
+    private bool isSliding;
+    private Vector3 slopeSlideVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,23 +63,38 @@ public class PlayerMovement : MonoBehaviour
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
+        SetSlideVelocity();
+
+        if (slopeSlideVelocity == Vector3.zero)
+        {
+            isSliding = false;
+        }
+
         if (characterController.isGrounded)
         {
             lastGroundTime = Time.time;
         }
 
-        if (Input.GetButtonDown("Jump") && canJump)
+        if (Input.GetButtonDown("Jump")/* && canJump*/)
         {
             jumpButtonPressedTime = Time.time;
         }
 
         if (Time.time - lastGroundTime <= jumpButtonGracePeriod)
         {
+            if (slopeSlideVelocity != Vector3.zero)
+            {
+                isSliding = true;
+            }
             characterController.stepOffset = originalStepOffset;
-            ySpeed = -0.5f;
+
+            if (!isSliding)
+            {
+                ySpeed = -0.5f;
+            }
             animator.SetBool("isJumping", false);
 
-            if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
+            if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod && !isSliding)
             {
                 ySpeed = jumpSpeed;
                 animator.SetBool("isJumping", true);
@@ -89,11 +107,13 @@ public class PlayerMovement : MonoBehaviour
             characterController.stepOffset = 0;
         }
 
-        Vector3 velocity = movementDirection * magnitude;
-        velocity.y = ySpeed;
+        //Vector3 velocity = movementDirection * magnitude;
+        //velocity.y = ySpeed;
         Physics.SyncTransforms();
         if (canMove)
         {
+            Vector3 velocity = movementDirection * magnitude;
+            velocity.y = ySpeed;
             characterController.Move(velocity * Time.deltaTime);
         }
 
@@ -111,17 +131,39 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsMoving", false);
         }
+
+
+        // Test
+        //if (!isSliding)
+        //{
+        //    Vector3 velocity = movementDirection * magnitude;
+        //    velocity.y = ySpeed;
+
+        //    characterController.Move(velocity * Time.deltaTime);
+        //}
+
+        if (isSliding)
+        {
+            Vector3 velocity = slopeSlideVelocity;
+            velocity.y = ySpeed;
+
+            characterController.Move(velocity * Time.deltaTime);
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.normal.y <= 0.6)
+        if (hit.normal.y <= 0.8)
         {
-            canJump = false;
+            slopeSlideVelocity = Vector3.ProjectOnPlane(new Vector3(0, ySpeed, 0), hit.normal);
+            return;
         }
-        else
-        {
-            canJump = true;
-        }
+
+        slopeSlideVelocity = Vector3.zero;
+    }
+
+    private void SetSlideVelocity()
+    {
+
     }
 }

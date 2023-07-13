@@ -66,10 +66,10 @@ public class PlayerAttack : MonoBehaviour
         {
             // Start the first attack
             anim.SetInteger("animation", 31);
-            playerstats.speed = 2f;
+            playerstats.speed = 1f;
             isInCombo = true;
             attackType = 1;
-            playerMovement.rotationSpeed = 100;
+            playerMovement.rotationSpeed = 50;
 
         }
 
@@ -80,15 +80,15 @@ public class PlayerAttack : MonoBehaviour
             if (attackType == 1)
             {
                 anim.SetInteger("animation", 33);
-                playerstats.speed = 3f;
-                playerMovement.rotationSpeed = 100;
+                playerstats.speed = 1f;
+                playerMovement.rotationSpeed = 50;
                 attackType = 2;
             }
             else if (attackType == 2)
             {
                 anim.SetInteger("animation", 6);
-                playerstats.speed = 2f;
-                playerMovement.rotationSpeed = 100;
+                playerstats.speed = 1f;
+                playerMovement.rotationSpeed = 50;
                 attackType = 3;
             }
         }
