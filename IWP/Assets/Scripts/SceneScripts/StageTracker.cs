@@ -14,6 +14,9 @@ public class StageTracker : MonoBehaviour
     private float timer = 0f;
     private float shakeIntensity = 2;
 
+    public GameObject player;
+    public PlayerStats playerStats;
+
     float shakeTime = 0.2f;
 
     private CinemachineBasicMultiChannelPerlin _cbmcp;
@@ -22,29 +25,34 @@ public class StageTracker : MonoBehaviour
     void Start()
     {
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        playerStats = player.GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeToShake -= Time.deltaTime;
-        if (timeToShake < 0f)
-        {
-            timeToShake = 10f;
-            // Play camera shake
-            ShakeCamera();
-            //Debug.Log("Shaking");
 
-        }
-
-        if (timer > 0)
+        if (playerStats.stage == 2)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0f)
+            timeToShake -= Time.deltaTime;
+            if (timeToShake < 0f)
             {
-                CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+                timeToShake = 10f;
+                // Play camera shake
+                ShakeCamera();
+                //Debug.Log("Shaking");
 
-                cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
+            }
+
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0f)
+                {
+                    CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+                    cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
+                }
             }
         }
     }

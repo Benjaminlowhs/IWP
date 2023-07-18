@@ -18,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     public int levelUpPoint;
     public int honor;
 
+    public int stage;
+
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI xpText;
     public TextMeshProUGUI levelText;
@@ -57,6 +59,7 @@ public class PlayerStats : MonoBehaviour
         maxHp = 100;
         hp = maxHp;
         honor = 0;
+        stage = 1;
 
         bs1 = bloodScreen1.GetComponent<Image>();
         bs2 = bloodScreen2.GetComponent<Image>();

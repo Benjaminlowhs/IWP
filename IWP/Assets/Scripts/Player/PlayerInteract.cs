@@ -13,6 +13,14 @@ public class PlayerInteract : MonoBehaviour
     public ParticleSystem bloodSplash;
 
     public Transform playerSpawnPoint;
+    public Transform bossStageSpawn;
+
+    PlayerStats playerStats;
+
+    public void Start()
+    {
+        playerStats = transform.GetComponent<PlayerStats>();
+    }
 
     public void Update()
     {
@@ -63,10 +71,27 @@ public class PlayerInteract : MonoBehaviour
     {
         if (other.gameObject.tag == "Death")
         {
-            transform.position = new Vector3(64, 4, 5);
+            if (playerStats.stage == 1)
+            {
+                transform.position = new Vector3(64, 4, 5);
+            }
+            if (playerStats.stage == 2)
+            {
+                transform.position = bossStageSpawn.position;
+            }
             transform.GetComponent<PlayerStats>().xp = 0;
             transform.GetComponent<PlayerStats>().hp = transform.GetComponent<PlayerStats>().maxHp;
 
+        }
+
+        // If player touches boss 1 portal
+        if (other.gameObject.tag == "Portal")
+        {
+            if (playerStats.stage == 1)
+            {
+                transform.position = bossStageSpawn.position;
+                playerStats.stage += 1;
+            }
         }
 
         if (other.gameObject.tag == "EnemyWeapon" || other.gameObject.tag == "BossWeapon")

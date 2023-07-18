@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour
     public GameObject playerWeapon;
     PlayerMovement playerMovement;
 
+    CharacterController characterController;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = false;
         playerstats = GetComponent<PlayerStats>();
         playerMovement = GetComponent<PlayerMovement>();
+        characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -40,7 +43,8 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            ComboClickCheck();
+            if (characterController.isGrounded)
+                ComboClickCheck();
         }
 
         if (continueComboCheck)
