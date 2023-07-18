@@ -42,11 +42,13 @@ public class Weapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Soldier")
         {
-            Debug.Log("Hit soldier");
             if (!other.gameObject.GetComponent<Soldier>().isHit)
             {
+
+                Debug.Log("Hit soldier");
                 other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
                 other.gameObject.GetComponent<Soldier>().isHit = true;
+                other.gameObject.GetComponent<Animator>().Play("flinch", 0 ,0);
             }
             
         }

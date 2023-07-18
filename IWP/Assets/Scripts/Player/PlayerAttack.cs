@@ -47,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
         {
             comboTimer -= Time.deltaTime;
 
-            Debug.Log(comboTimer);
+            //Debug.Log(comboTimer);
             if (comboTimer < 0f)
             {
                 continueComboCheck = false;

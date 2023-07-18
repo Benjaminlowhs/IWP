@@ -102,12 +102,29 @@ public class Soldier : Enemy
                         healTimer = 3f;
                     }
                 }
+
                 enemy.speed = 0f;
+
                 if (fovRange >= Vector3.Distance(player.position, transform.position))
                 {
                     //Debug.Log("In range");
-                    enemy.speed = 5f;
-                    myCurrentState = State.CHASE;
+                    if (!hasRolled)
+                    {
+                        if (RollSurrenderChance())
+                        {
+                            Debug.Log("Surrender");
+                            myCurrentState = State.SURRENDER;
+
+                            timeToDespawn = Time.time + 10f;
+                        }
+                        else
+                        {
+
+                            enemy.speed = 5f;
+                            myCurrentState = State.CHASE;
+                        }
+                    }
+
                 }
                 break;
             case State.CHASE:
@@ -120,11 +137,9 @@ public class Soldier : Enemy
                 }
                 else
                 {
-                    //transform.position += transform.forward * movementSpeed * Time.deltaTime;
                     enemy.SetDestination(player.position);
                     if (stoppingDistance >= Vector3.Distance(player.position, transform.position))
                     {
-                        //animator.SetBool("isChasing", false);
                         myCurrentState = State.ATTACK;
                     }
                 }
@@ -137,8 +152,6 @@ public class Soldier : Enemy
                     animator.SetBool("isChasing", true);
                     myCurrentState = State.CHASE;
                 }
-                //Debug.Log("Attacking");
-                //playerStats.hp -= (enemyDamage - playerStats.defense);
                 break;
             case State.SURRENDER:
                 animator.SetBool("isSurrender", true);
@@ -153,18 +166,18 @@ public class Soldier : Enemy
                 break;
         }
 
-        if (healthPoint <= (0.2 * maxHP))
-        {
-            if (!hasRolled)
-            {
-                if (RollSurrenderChance())
-                {
-                    myCurrentState = State.SURRENDER;
+        //if (healthPoint <= (0.2 * maxHP))
+        //{
+        //    if (!hasRolled)
+        //    {
+        //        if (RollSurrenderChance())
+        //        {
+        //            myCurrentState = State.SURRENDER;
 
-                    timeToDespawn = Time.time + 10f;
-                }
-            }
-        }
+        //            timeToDespawn = Time.time + 10f;
+        //        }
+        //    }
+        //}
 
     }
 
@@ -192,12 +205,12 @@ public class Soldier : Enemy
         hasRolled = true;
         if (Random.value <= chance)
         {
-            //Debug.Log(chance.ToString("F8") + ", successful");
+            Debug.Log(chance.ToString("F8") + ", successful");
             return true;
         }
         else
         {
-            //Debug.Log(chance.ToString("F8") + ", failed");
+            Debug.Log(chance.ToString("F8") + ", failed");
             return false;
         }
     }

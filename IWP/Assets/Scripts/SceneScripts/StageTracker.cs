@@ -33,7 +33,7 @@ public class StageTracker : MonoBehaviour
             timeToShake = 10f;
             // Play camera shake
             ShakeCamera();
-            Debug.Log("Shaking");
+            //Debug.Log("Shaking");
 
         }
 
