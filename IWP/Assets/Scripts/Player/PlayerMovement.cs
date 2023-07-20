@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpButtonGracePeriod = 0.2f;
     private float? lastGroundTime;
     private float? jumpButtonPressedTime;
+    private float testJump = 0.1f;
 
     PlayerStats playerstats;
 
@@ -63,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
-        SetSlideVelocity();
 
         if (slopeSlideVelocity == Vector3.zero)
         {
@@ -73,9 +73,10 @@ public class PlayerMovement : MonoBehaviour
         if (characterController.isGrounded)
         {
             lastGroundTime = Time.time;
+            //animator.SetBool("isJumping", false);
         }
 
-        if (Input.GetButtonDown("Jump")/* && canJump*/)
+        if (Input.GetButtonDown("Jump")/* && canJump*/ && !isAnimationStatePlaying(animator, 0, "jump") && characterController.isGrounded)
         {
             jumpButtonPressedTime = Time.time;
         }
@@ -93,11 +94,10 @@ public class PlayerMovement : MonoBehaviour
                 ySpeed = -0.5f;
             }
             animator.SetBool("isJumping", false);
-
             if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod && !isSliding)
             {
                 ySpeed = jumpSpeed;
-                animator.SetBool("isJumping", true);
+                animator.Play("jump");
                 jumpButtonPressedTime = null;
                 lastGroundTime = null;
             }
@@ -133,15 +133,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        // Test
-        //if (!isSliding)
-        //{
-        //    Vector3 velocity = movementDirection * magnitude;
-        //    velocity.y = ySpeed;
-
-        //    characterController.Move(velocity * Time.deltaTime);
-        //}
-
         if (isSliding)
         {
             Vector3 velocity = slopeSlideVelocity;
@@ -162,8 +153,12 @@ public class PlayerMovement : MonoBehaviour
         slopeSlideVelocity = Vector3.zero;
     }
 
-    private void SetSlideVelocity()
+    bool isAnimationStatePlaying(Animator anim, int animLayer, string stateName)
     {
-
+        if (anim.GetCurrentAnimatorStateInfo(animLayer).IsName(stateName) &&
+                anim.GetCurrentAnimatorStateInfo(animLayer).normalizedTime < 1.0f)
+            return true;
+        else
+            return false;
     }
 }

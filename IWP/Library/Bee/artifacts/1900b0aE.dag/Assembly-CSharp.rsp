@@ -392,6 +392,7 @@
 "Assets/Scripts/Player/WeaponStats.cs"
 "Assets/Scripts/SceneScripts/SceneLoader.cs"
 "Assets/Scripts/SceneScripts/StageTracker.cs"
+"Assets/Scripts/SceneScripts/UIManager.cs"
 -langversion:9.0
 
 /deterministic

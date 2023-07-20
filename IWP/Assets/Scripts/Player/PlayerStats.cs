@@ -7,14 +7,15 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
 
-    public int xp;
-    public int hp;
-    public int level;
-    public int maxHp;
+    public float xp;
+    public float xpToLevel;
+    public float hp;
+    public float level;
+    public float maxHp;
     public int attack;
     public int defense;
     public float speed;
-    private int carryOverXp;
+    private float carryOverXp;
     public int levelUpPoint;
     public int honor;
 
@@ -28,6 +29,8 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI lvlUpPointText;
     public TextMeshProUGUI atkText;
     public TextMeshProUGUI defText;
+
+    public TextMeshProUGUI deathText;
 
 
     public GameObject bloodScreen1;
@@ -45,6 +48,11 @@ public class PlayerStats : MonoBehaviour
     public GameObject defBtn;
 
     public Transform playerRespawnPoint;
+    public Transform bossRespawnPoint;
+
+    public GameObject deathScreen;
+
+    public GameObject player;
 
     public int hitAmount = 0;
 
@@ -60,32 +68,30 @@ public class PlayerStats : MonoBehaviour
         hp = maxHp;
         honor = 0;
         stage = 1;
+        xpToLevel = level * 10;
 
         bs1 = bloodScreen1.GetComponent<Image>();
         bs2 = bloodScreen2.GetComponent<Image>();
         bs3 = bloodScreen3.GetComponent<Image>();
-
         isHit = false;
-        //healthText.text = "HP: " + hp.ToString();
-        //xpText.text = "XP: " + xp.ToString();
-        //levelText.text = "Level: " + level.ToString();
+        
     }
 
     private void Update()
     {
         if (hp <= 0)
         {
-            //Debug.Log("Dead");
-            xp = 0;
-            hp = maxHp;
-            transform.position = playerRespawnPoint.position;
+            deathText.text = "You have taken serious damage and retreated.";
+            Die();
         }
 
-        if (xp >= level * 10)
+
+        if (xp >= xpToLevel)
         {
             carryOverXp = xp - (level * 10);
             xp = carryOverXp;
             level += 1;
+            xpToLevel = level * 10;
             levelUpPoint += 1;
         }
 
@@ -100,7 +106,6 @@ public class PlayerStats : MonoBehaviour
 
         LevelUpUI();
         BloodScreenUI();
-
 
 
     }
@@ -178,11 +183,39 @@ public class PlayerStats : MonoBehaviour
 
             if (bs1.color.a < 0f && bs2.color.a < 0f && bs3.color.a < 0f)
             {
-                fadeBloodScreen = false;
+                fadeBloodScreen = false; 
             }
         }
     }
 
+    public void Die()
+    {
+        deathScreen.SetActive(true);
+        player.SetActive(false);
+        Debug.Log("Die");
+    }
 
+    public void Respawn()
+    {
+        if (stage == 1)
+        {
+            transform.position = playerRespawnPoint.position;
+        }
+        else if (stage == 2)
+        {
+            transform.position = bossRespawnPoint.position;
+        }
+        player.SetActive(true);
+        deathScreen.SetActive(false);
+        bs1.color = new Color(bs1.color.r, bs1.color.g, bs1.color.b, 0);
+        bs2.color = new Color(bs1.color.r, bs1.color.g, bs1.color.b, 0);
+        bs3.color = new Color(bs1.color.r, bs1.color.g, bs1.color.b, 0);
+        xp = 0;
+        hp = maxHp;
+        isHit = false;
+        hitAmount = 0;
+        fadeBloodScreen = true;
+        bloodScreenTimer = 5f;
+    }
 
 }

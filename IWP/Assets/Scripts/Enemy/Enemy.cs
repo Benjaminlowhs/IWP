@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float maxHP;
     public int fovRange;
     public float healthPoint;
-    public int enemyLevel;
+    public float enemyLevel;
     public int enemyDamage;
 
     public float rotationSpeed = 10f;

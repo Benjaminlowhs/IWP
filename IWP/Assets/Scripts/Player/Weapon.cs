@@ -27,7 +27,6 @@ public class Weapon : MonoBehaviour
         }
 
         playerStats = player.GetComponent<PlayerStats>();
-        //soldierScript = soldier.GetComponent<Soldier>();
 
         
     }

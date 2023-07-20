@@ -29,14 +29,6 @@ public class PlayerInteract : MonoBehaviour
             InventoryUI();
         }
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            StatsUI();
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            weaponStatsUI();
-        }
     }
 
     public void InventoryUI()
@@ -46,41 +38,27 @@ public class PlayerInteract : MonoBehaviour
             inventory.gameObject.SetActive(true);
         else
             inventory.gameObject.SetActive(false);
+        //inventory.gameObject.SetActive(inventory.gameObject.activeInHierarchy);
     }
 
-    public void StatsUI()
-    {
-        statsToggle = !statsToggle;
-        if (statsToggle)
-            stats.gameObject.SetActive(true);
-        else
-            stats.gameObject.SetActive(false);
-    }
-
-    public void weaponStatsUI()
-    {
-        weaponStatsToggle = !weaponStatsToggle;
-        if (weaponStatsToggle)
-            weaponStats.gameObject.SetActive(true);
-        else
-            weaponStats.gameObject.SetActive(false);
-
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Death")
         {
-            if (playerStats.stage == 1)
-            {
-                transform.position = new Vector3(64, 4, 5);
-            }
-            if (playerStats.stage == 2)
-            {
-                transform.position = bossStageSpawn.position;
-            }
-            transform.GetComponent<PlayerStats>().xp = 0;
-            transform.GetComponent<PlayerStats>().hp = transform.GetComponent<PlayerStats>().maxHp;
+            //if (playerStats.stage == 1)
+            //{
+            //    transform.position = new Vector3(64, 4, 5);
+            //}
+            //if (playerStats.stage == 2)
+            //{
+            //    transform.position = bossStageSpawn.position;
+            //}
+            //transform.GetComponent<PlayerStats>().xp = 0;
+            //transform.GetComponent<PlayerStats>().hp = transform.GetComponent<PlayerStats>().maxHp;
+            playerStats.deathText.text = "You have fallen off the cliff and retreat to safety.";
+            playerStats.Die();
 
         }
 

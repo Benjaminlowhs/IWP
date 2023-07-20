@@ -11,7 +11,7 @@ public class Soldier : Enemy
     public GameObject enemyWeapon;
 
     public Animator animator;
-    private float stoppingDistance = 3f;
+    private float stoppingDistance = 2.5f;
 
     public NavMeshAgent enemy;
 
@@ -48,7 +48,7 @@ public class Soldier : Enemy
         animator = GetComponent<Animator>();
         playerStats = player.GetComponent<PlayerStats>();
         enemyLevel = playerStats.level + 2;
-        enemyDamage = 5;
+        enemyDamage = 20;
         maxHP = enemyLevel * 25;
         healthPoint = maxHP;
     }
@@ -80,7 +80,7 @@ public class Soldier : Enemy
             }
             DropItem();
             die();
-            playerStats.xp += enemyLevel * 5;
+            playerStats.xp += enemyLevel * 2;
         }
 
         
@@ -123,6 +123,13 @@ public class Soldier : Enemy
                             enemy.speed = 5f;
                             myCurrentState = State.CHASE;
                         }
+
+                    }
+                    else
+                    {
+
+                        enemy.speed = 5f;
+                        myCurrentState = State.CHASE;
                     }
 
                 }
@@ -203,14 +210,17 @@ public class Soldier : Enemy
         }
 
         hasRolled = true;
-        if (Random.value <= chance)
+        float random = Random.value;
+        if (random <= chance)
         {
-            Debug.Log(chance.ToString("F8") + ", successful");
+            //Debug.Log(chance.ToString("F8") + ", successful");
+            //Debug.Log(random.ToString("F8") + ", successful");
             return true;
         }
         else
         {
-            Debug.Log(chance.ToString("F8") + ", failed");
+            //Debug.Log(chance.ToString("F8") + ", failed");
+            //Debug.Log(random.ToString("F8") + ", fail");
             return false;
         }
     }
@@ -233,19 +243,19 @@ public class Soldier : Enemy
         {
             Instantiate(carbon, transform.position, Quaternion.identity);
         }
-        if (Random.value <= 0.05)
+        else if (Random.value <= 0.05)
         {
             Instantiate(steel, transform.position, Quaternion.identity);
         }
-        if (Random.value <= 0.1)
+        else if (Random.value <= 0.1)
         {
             Instantiate(iron, transform.position, Quaternion.identity);
         }
-        if (Random.value <= 0.15)
+        else if (Random.value <= 0.15)
         {
             Instantiate(gold, transform.position, Quaternion.identity);
         }
-        if (Random.value <= 1.0)
+        else if (Random.value <= 1.0)
         {
             Instantiate(bandage, transform.position, Quaternion.identity);
         }
