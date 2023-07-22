@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    
+
     public float rotationSpeed = 720f;
     private float jumpSpeed = 5f;
 
@@ -30,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isSliding;
     private Vector3 slopeSlideVelocity;
 
+    //Audio stuff
+    AudioManager audioManager;
+    AudioSource audioWalk;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
         playerstats = GetComponent<PlayerStats>();
         canJump = true;
         playerAttack = GetComponent<PlayerAttack>();
+        audioWalk = GetComponent<AudioSource>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -58,6 +64,15 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
+        if (characterController.isGrounded && (horizontalInput != 0 || verticalInput != 0))
+        {
+            audioWalk.enabled = true;
+        }
+        else
+        {
+            audioWalk.enabled = false;
+        }
+
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * playerstats.speed;
         movementDirection.Normalize();
@@ -76,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             //animator.SetBool("isJumping", false);
         }
 
-        if (Input.GetButtonDown("Jump")/* && canJump*/ && !isAnimationStatePlaying(animator, 0, "jump") && characterController.isGrounded)
+        if (Input.GetButtonDown("Jump")/* && canJump*/ && !isAnimationStatePlaying(animator, 0, "jump")/* && characterController.isGrounded*/)
         {
             jumpButtonPressedTime = Time.time;
         }
@@ -98,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 ySpeed = jumpSpeed;
                 animator.Play("jump");
+                audioManager.PlaySFX(audioManager.jump);
                 jumpButtonPressedTime = null;
                 lastGroundTime = null;
             }
@@ -122,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsMoving", true);
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
+            
             if (canMove)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);

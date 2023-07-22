@@ -50,6 +50,8 @@ public class PlayerStats : MonoBehaviour
     public Transform playerRespawnPoint;
     public Transform bossRespawnPoint;
 
+    PlayerAttack playerAttack;
+
     public GameObject deathScreen;
 
     public GameObject player;
@@ -74,7 +76,10 @@ public class PlayerStats : MonoBehaviour
         bs2 = bloodScreen2.GetComponent<Image>();
         bs3 = bloodScreen3.GetComponent<Image>();
         isHit = false;
-        
+
+        playerAttack = GetComponent<PlayerAttack>();
+
+
     }
 
     private void Update()
@@ -97,7 +102,7 @@ public class PlayerStats : MonoBehaviour
 
         healthText.text = "HP: " + hp.ToString();
         xpText.text = "XP: " + xp.ToString();
-        levelText.text = "Level: " + level.ToString();
+        levelText.text = "Lv" + level.ToString();
         honorText.text = "Honor: " + honor.ToString();
 
         lvlUpPointText.text = "Available Points: " + levelUpPoint;
@@ -216,6 +221,8 @@ public class PlayerStats : MonoBehaviour
         hitAmount = 0;
         fadeBloodScreen = true;
         bloodScreenTimer = 5f;
+        playerAttack.ComboEnd();
+
     }
 
 }

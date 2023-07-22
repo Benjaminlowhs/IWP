@@ -42,6 +42,9 @@ public class Boss : Enemy
     // Time for boss to despawn after losing
     float timeToDespawn;
 
+    //Audio stuff
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +55,8 @@ public class Boss : Enemy
         movementSpeed = 4;
         // Get player component
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         // Get animator component of parent
         animator = GetComponent<Animator>();
         // Get Player stats component
@@ -144,10 +149,14 @@ public class Boss : Enemy
                 {
                     RotateTowards(player);
                     animator.SetTrigger("attack1");
+                    //audioManager.PlaySFX(audioManager.bossAttackDouble);
+                    
+
                 }
                 else if (attackChoice == 2)
                 {
                     animator.SetTrigger("attack2");
+                    //audioManager.PlaySFX(audioManager.bossAttackSwing);
                 }
 
                 break;

@@ -13,7 +13,8 @@ public class Weapon : MonoBehaviour
     //public GameObject soldier;
     //Soldier soldierScript;
 
-
+    //Audio stuff
+    AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,9 @@ public class Weapon : MonoBehaviour
 
         playerStats = player.GetComponent<PlayerStats>();
 
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+
     }
 
     // Update is called once per frame
@@ -48,6 +51,7 @@ public class Weapon : MonoBehaviour
                 other.gameObject.GetComponent<Soldier>().healthPoint -= playerStats.attack + weaponAttack;
                 other.gameObject.GetComponent<Soldier>().isHit = true;
                 other.gameObject.GetComponent<Animator>().Play("flinch", 0 ,0);
+                audioManager.PlaySFX(audioManager.hit);
             }
             
         }

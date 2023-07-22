@@ -17,9 +17,14 @@ public class PlayerInteract : MonoBehaviour
 
     PlayerStats playerStats;
 
+    //Audio stuff
+    AudioManager audioManager;
+    
+
     public void Start()
     {
         playerStats = transform.GetComponent<PlayerStats>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     public void Update()
@@ -76,6 +81,7 @@ public class PlayerInteract : MonoBehaviour
         {
 
             bloodSplash.Play();
+            audioManager.PlaySFX(audioManager.getHitGrunt);
         }
     }
 }

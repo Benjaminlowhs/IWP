@@ -255,7 +255,7 @@ public class Soldier : Enemy
         {
             Instantiate(gold, transform.position, Quaternion.identity);
         }
-        else if (Random.value <= 1.0)
+        else if (Random.value <= 0.5)
         {
             Instantiate(bandage, transform.position, Quaternion.identity);
         }

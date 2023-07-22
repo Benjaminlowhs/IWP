@@ -23,6 +23,9 @@ public class PlayerAttack : MonoBehaviour
 
     CharacterController characterController;
 
+    //Audio stuff
+    AudioManager audioManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,8 @@ public class PlayerAttack : MonoBehaviour
         playerstats = GetComponent<PlayerStats>();
         playerMovement = GetComponent<PlayerMovement>();
         characterController = GetComponent<CharacterController>();
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -46,9 +51,14 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (!inventory.activeSelf || !deathScreen.activeSelf)
+            if (!inventory.activeSelf && !deathScreen.activeSelf)
+            {
                 if (characterController.isGrounded)
+                {
+                    Debug.Log(inventory.activeSelf);
                     ComboClickCheck();
+                }
+            }
         }
 
         if (continueComboCheck)
@@ -78,6 +88,8 @@ public class PlayerAttack : MonoBehaviour
             isInCombo = true;
             attackType = 1;
             playerMovement.rotationSpeed = 50;
+            audioManager.PlaySFX(audioManager.slash);
+            audioManager.PlaySFX(audioManager.AttackingGrunt);
 
         }
 
@@ -91,6 +103,8 @@ public class PlayerAttack : MonoBehaviour
                 playerstats.speed = 0f;
                 playerMovement.rotationSpeed = 50;
                 attackType = 2;
+                audioManager.PlaySFX(audioManager.slash);
+                audioManager.PlaySFX(audioManager.AttackingGrunt);
             }
             else if (attackType == 2)
             {
@@ -98,6 +112,8 @@ public class PlayerAttack : MonoBehaviour
                 playerstats.speed = 1f;
                 playerMovement.rotationSpeed = 50;
                 attackType = 3;
+                audioManager.PlaySFX(audioManager.slash);
+                audioManager.PlaySFX(audioManager.AttackingGrunt);
             }
         }
     }

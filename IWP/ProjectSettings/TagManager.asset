@@ -11,6 +11,7 @@ TagManager:
   - BossWeapon
   - Boss
   - Portal
+  - Audio
   layers:
   - Default
   - TransparentFX
