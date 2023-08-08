@@ -37,6 +37,10 @@ public class Soldier : Enemy
 
     float healTimer = 3f;
 
+
+    //Audio stuff
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +55,9 @@ public class Soldier : Enemy
         enemyDamage = 20;
         maxHP = enemyLevel * 25;
         healthPoint = maxHP;
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
 
     // Update is called once per frame
@@ -213,14 +220,10 @@ public class Soldier : Enemy
         float random = Random.value;
         if (random <= chance)
         {
-            //Debug.Log(chance.ToString("F8") + ", successful");
-            //Debug.Log(random.ToString("F8") + ", successful");
             return true;
         }
         else
         {
-            //Debug.Log(chance.ToString("F8") + ", failed");
-            //Debug.Log(random.ToString("F8") + ", fail");
             return false;
         }
     }
@@ -259,5 +262,10 @@ public class Soldier : Enemy
         {
             Instantiate(bandage, transform.position, Quaternion.identity);
         }
+    }
+
+    public void PlaySlashSound()
+    {
+        audioManager.PlaySFX(audioManager.slash);
     }
 }

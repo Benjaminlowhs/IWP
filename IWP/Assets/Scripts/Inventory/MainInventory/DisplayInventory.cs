@@ -9,6 +9,9 @@ using UnityEngine.Events;
 public class DisplayInventory : MonoBehaviour
 {
     public GameObject inventoryPrefab;
+    public GameObject popupScreen;
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI itemDesc;
 
     public InventoryObject inventory;
 
@@ -50,6 +53,7 @@ public class DisplayInventory : MonoBehaviour
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetItem[_slot.Value.item.Id].uiDisplay;
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
+               
             }
             else
             {
@@ -123,11 +127,45 @@ public class DisplayInventory : MonoBehaviour
 
     public void OnEnter(GameObject obj)
     {
+        if (itemsDisplayed[obj].item != null)
+        {
+            if (itemsDisplayed[obj].item.Name != "")
+            {
+                popupScreen.SetActive(true);
+                popupScreen.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y - 140, obj.transform.position.z);
+                if (itemsDisplayed[obj].item.Id == 0)
+                {
+                    itemName.text = "Gold (Resource)";
+                    itemDesc.text = "Gold is a rare ore that is used to upgrade your sword.";
+                }
+                if (itemsDisplayed[obj].item.Id == 1)
+                {
+                    itemName.text = "Iron (Resource)";
+                    itemDesc.text = "Iron is a common ore that is used to upgrade your sword.";
+                }
+                if (itemsDisplayed[obj].item.Id == 2)
+                {
+                    itemName.text = "Steel (Resource)";
+                    itemDesc.text = "Steel is a uncommon ore that is used to upgrade your sword.";
+                }
+                if (itemsDisplayed[obj].item.Id == 3)
+                {
+                    itemName.text = "Carbon Steel (Resource)";
+                    itemDesc.text = "Carbon Steel is a super rare ore that is used to upgrade your sword.";
+                }
+                if (itemsDisplayed[obj].item.Id == 4)
+                {
+                    itemName.text = "Bandage (Usable)";
+                    itemDesc.text = "Bandage is used to heal yourself 20 health points";
+                }
+            }
 
+        }
     }
     public void OnExit(GameObject obj)
     {
-
+        
+        popupScreen.SetActive(false);
     }
     public void OnClick(GameObject obj)
     {
@@ -147,6 +185,7 @@ public class DisplayInventory : MonoBehaviour
 
         
     }
+
 
 
 }

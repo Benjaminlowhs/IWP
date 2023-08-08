@@ -149,14 +149,12 @@ public class Boss : Enemy
                 {
                     RotateTowards(player);
                     animator.SetTrigger("attack1");
-                    //audioManager.PlaySFX(audioManager.bossAttackDouble);
                     
 
                 }
                 else if (attackChoice == 2)
                 {
                     animator.SetTrigger("attack2");
-                    //audioManager.PlaySFX(audioManager.bossAttackSwing);
                 }
 
                 break;
@@ -196,5 +194,12 @@ public class Boss : Enemy
     public void StopAttack()
     {
         bossWeapon.GetComponent<Collider>().enabled = false;
+    }
+
+
+    public void PlaySingleSwingSound()
+    {
+        audioManager.PlaySFX(audioManager.bossAttackSwing);
+
     }
 }
