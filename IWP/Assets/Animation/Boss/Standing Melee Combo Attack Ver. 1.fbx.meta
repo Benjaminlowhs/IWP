@@ -64,6 +64,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.39399898
+        functionName: PlaySingleSwingSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.4147157
         functionName: StartAttack
         data: 
@@ -73,6 +80,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.5506936
         functionName: StopAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5519839
+        functionName: PlaySingleSwingSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

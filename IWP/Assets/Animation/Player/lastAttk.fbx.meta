@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f0e020bf1df61f443a4d1e95aa6945bf
+guid: cf2126551e5cdab4ba8bb3c8d9cb9ff4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -37,7 +37,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 61
+      lastFrame: 52
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -57,24 +57,31 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.32687834
+      - time: 0.13174458
+        functionName: WeaponColliderOn
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.40984905
         functionName: PlaySlashSound
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 30dbc6688b925304c8233912d63aebbf, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.37160873
-        functionName: StartAttack
+      - time: 0.5558041
+        functionName: WeaponColliderOff
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: cd5d7ee8aa6bb9c46995eb4016629342, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8643635
-        functionName: StopAttack
+      - time: 0.94296587
+        functionName: ComboEnd
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: cd5d7ee8aa6bb9c46995eb4016629342, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: ae690f56a0242934782796ed98bb5106, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
